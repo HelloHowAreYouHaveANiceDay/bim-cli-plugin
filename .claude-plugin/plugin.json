@@ -1,0 +1,8 @@
+{
+  "name": "bim-cli",
+  "description": "AEC tools for headless PDF processing (extract, stamp, split, sign), flood/site lookups, and offline BIM tasks -- without requiring Revit or any desktop app open. Runs locally via the installed bim binary on PATH.",
+  "author": "HelloHowAreYouHaveANiceDay",
+  "category": "development",
+  "source": "git+https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin",
+  "privacy_policy": "https://mcp.bimcli.com/privacy"
+}

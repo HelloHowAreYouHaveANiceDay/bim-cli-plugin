@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bim-cli": {
+      "type": "stdio",
+      "command": "bim",
+      "args": ["mcp"]
+    }
+  }
+}
