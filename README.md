@@ -1,8 +1,11 @@
 # bim-cli Claude Code Plugin
 
-Claude Code plugin manifest for [bim-cli](https://bimcli.com) -- AEC tools for headless PDF
-processing, flood/site lookups, and offline BIM tasks that run without Revit or any desktop
-app open.
+Claude Code plugin manifest for [bim-cli](https://bimcli.com) -- headless Revit export, PDF
+batch export, flood/site data lookup, and offline AEC tasks. Runs from your AI assistant
+without Revit or any desktop app open.
+
+**Windows-only.** bim-cli is a Windows-only CLI. This plugin requires a Windows machine with
+bim-cli installed.
 
 ## What this plugin does
 
@@ -18,9 +21,21 @@ Exposes all installed bim-cli verbs as MCP tools in Claude Code. Each tool maps 
 The tool list is generated dynamically from `bim describe --json` -- adding a new bim-cli
 driver or verb makes it available automatically.
 
+## About this plugin repo
+
+This repository contains **only manifest files** (JSON and Markdown). It contains:
+
+- No executable code
+- No telemetry of its own
+- No secrets or credentials
+- No network calls
+
+All execution is local: the plugin simply tells Claude Code how to launch the already-installed
+`bim` binary as a local stdio MCP server (`bim mcp`). Nothing runs in the cloud.
+
 ## Setup
 
-1. **Install bim-cli** (if not already):
+1. **Install bim-cli** (Windows, run in PowerShell):
 
    ```powershell
    iwr -useb https://bimcli.com/install.ps1 | iex
@@ -28,12 +43,13 @@ driver or verb makes it available automatically.
 
    Verify: `bim describe --json` should list installed drivers.
 
-2. **Add this plugin to Claude Code** via the Claude Code plugin directory, or manually:
+2. **Add this plugin to Claude Code** via the Claude Code plugin directory, or manually add
+   the following to your `.mcp.json` in your project root (or via Claude Code settings):
 
    ```json
    {
      "mcpServers": {
-       "bim-cli": {
+       "bim": {
          "type": "stdio",
          "command": "bim",
          "args": ["mcp"]
@@ -41,9 +57,6 @@ driver or verb makes it available automatically.
      }
    }
    ```
-
-   Add this to your Claude Code MCP configuration (`.mcp.json` in your project root, or
-   via Claude Code settings).
 
 3. Restart Claude Code. Verify with `bim doctor` that installed drivers are healthy.
 
@@ -70,9 +83,18 @@ lookup calls a public FEMA/NFHL endpoint; a PDF operation makes no network calls
 
 Full privacy policy: [https://mcp.bimcli.com/privacy](https://mcp.bimcli.com/privacy)
 
+## License
+
+The files in this repository (the plugin manifest and MCP server declaration) are released
+under the MIT License. See [LICENSE](LICENSE).
+
+The MIT License covers only the manifest files in this repo. The bim-cli binary itself is
+proprietary software; its license is separate and can be found at
+[https://bimcli.com](https://bimcli.com).
+
 ## More
 
 - bim-cli docs: [https://bimcli.com](https://bimcli.com)
 - MCP listing home: [https://mcp.bimcli.com](https://mcp.bimcli.com)
 - Capability schema: `bim describe --json`
-- Issues: [https://bimcli.com](https://bimcli.com)
+- Issues: [https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin/issues](https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin/issues)
