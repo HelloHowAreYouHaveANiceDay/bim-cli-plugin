@@ -1,0 +1,13 @@
+# GENERATED -- product-repo sensitive-path gate. DO NOT EDIT BY HAND.
+# Requires the human owner's review on deploy / CI / auth / secret / migration
+# paths, enforced off-host by a GitHub ruleset (require Code Owner review, no
+# bypass). Normal product code is NOT gated -- the factory keeps merging it
+# autonomously. Mirrors the daemon's high_path_globs (minus the dim-factory
+# kernel globs, which only apply to the factory's own repo).
+
+/.github/            @HelloHowAreYouHaveANiceDay
+wrangler.toml        @HelloHowAreYouHaveANiceDay
+auth/                @HelloHowAreYouHaveANiceDay
+*secret*             @HelloHowAreYouHaveANiceDay
+migrations/          @HelloHowAreYouHaveANiceDay
+/.github/CODEOWNERS  @HelloHowAreYouHaveANiceDay
