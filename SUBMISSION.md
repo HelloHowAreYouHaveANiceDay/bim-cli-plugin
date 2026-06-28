@@ -8,8 +8,8 @@
 
 - [x] `bim mcp` works as a stdio MCP server (`bim describe --json` lists installed verbs; `bim mcp` launches them as MCP tools)
 - [x] `HelloHowAreYouHaveANiceDay/bim-cli-plugin` is public with valid `.claude-plugin/plugin.json` + `.mcp.json`
-- [x] Privacy policy live at `https://mcp.bimcli.com/privacy` (200) and `https://bimcli.com/privacy/` (200)
-- [x] `plugin.json` `privacy_policy` field points to `https://mcp.bimcli.com/privacy`
+- [x] Privacy policy live at `https://bimcli.com/privacy` (200)
+- [x] `plugin.json` `privacy_policy` field points to `https://bimcli.com/privacy`
 
 ---
 
@@ -21,7 +21,7 @@
 | **Publisher / author** | `bimcli.com` |
 | **Homepage** | `https://bimcli.com` |
 | **Source repo** | `https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin` |
-| **Privacy policy URL** | `https://mcp.bimcli.com/privacy` |
+| **Privacy policy URL** | `https://bimcli.com/privacy` |
 | **Category** | Development tools |
 | **Tags** | `revit`, `aec`, `bim`, `pdf`, `windows`, `offline`, `construction` |
 | **Contact / support** | `smalltigergroup@gmail.com` |
@@ -55,17 +55,22 @@ Windows-only. Requires bim-cli v0.3.6+ installed (`iwr -useb https://bimcli.com/
 
 ---
 
-## Manifest validation (manual — no Anthropic linter published as of 2026-06-26)
+## Manifest validation (manual — no Anthropic linter published as of 2026-06-27)
 
-- `name`: lowercase, no spaces ✓
-- `version`: semver ✓
+Schema source: https://docs.anthropic.com/en/docs/claude-code/plugins (verified 2026-06-27)
+
+- `name`: `"bim-cli"` lowercase, kebab-case ✓
+- `displayName`: `"bim-cli — AEC tools for AI agents"` ✓
+- `version`: `"0.3.6"` semver ✓
 - `description`: < 200 chars ✓
+- `author`: object with `name` + `url` ✓
 - `homepage`: `https://bimcli.com` live 200 ✓
-- `category`: `"development"` ✓
-- `mcp`: `.mcp.json` present ✓
-- `source`: public repo ✓
-- `privacy_policy`: `https://mcp.bimcli.com/privacy` live 200 ✓
-- `.mcp.json`: `"type": "stdio"`, `"command": "bim"`, `"args": ["mcp"]` ✓
+- `repository`: public repo URL ✓
+- `license`: `"MIT"` ✓
+- `keywords`: array of discovery tags ✓
+- `mcpServers`: `"./.mcp.json"` (correct schema field, verified against docs) ✓
+- `privacy_policy`: `https://bimcli.com/privacy` live 200 ✓
+- `.mcp.json`: server key `"bim"`, `"type": "stdio"`, `"command": "bim"`, `"args": ["mcp"]` ✓
 
 ---
 
@@ -85,7 +90,7 @@ publisher attestations. **Do not delegate to an autonomous worker.**
    You are attesting as the individual publisher of bim-cli that:
    - You own `HelloHowAreYouHaveANiceDay/bim-cli-plugin` and are authorized to publish bim-cli.
    - The plugin meets the directory standards (local execution only, privacy policy live, no document content telemetry).
-   - The privacy policy at `https://mcp.bimcli.com/privacy` is accurate.
+   - The privacy policy at `https://bimcli.com/privacy` is accurate.
 
 4. **Fill the submission form** using the copy-paste inputs above.
 
