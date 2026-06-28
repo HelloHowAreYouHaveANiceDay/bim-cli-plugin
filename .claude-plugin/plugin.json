@@ -1,11 +1,16 @@
 {
   "name": "bim-cli",
-  "version": "0.1.0",
-  "description": "Headless Revit export, PDF batch export, flood/site data lookup -- run from your AI assistant, offline, no Revit required. Launches the locally-installed bim binary as a stdio MCP server; no code runs in the cloud.",
-  "author": "bimcli.com",
+  "displayName": "bim-cli — AEC tools for AI agents",
+  "version": "0.3.6",
+  "description": "Headless AEC tools for AI agents: PDF batch operations, Revit export, site/flood data, building-code compliance, Blender IFC. Works offline, no cloud backend. Windows only. Install from bimcli.com.",
+  "author": {
+    "name": "HelloHowAreYouHaveANiceDay",
+    "url": "https://bimcli.com"
+  },
   "homepage": "https://bimcli.com",
-  "category": "development",
-  "mcp": ".mcp.json",
-  "source": "git+https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin",
-  "privacy_policy": "https://mcp.bimcli.com/privacy"
+  "repository": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin",
+  "license": "MIT",
+  "keywords": ["aec", "architecture", "engineering", "construction", "revit", "bim", "pdf", "developer-tools", "productivity"],
+  "mcpServers": "./.mcp.json",
+  "privacy_policy": "https://bimcli.com/privacy"
 }

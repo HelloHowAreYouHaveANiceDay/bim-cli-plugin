@@ -81,7 +81,7 @@ lookup calls a public FEMA/NFHL endpoint; a PDF operation makes no network calls
 - User identity or any personal data.
 - MCP argument values.
 
-Full privacy policy: [https://mcp.bimcli.com/privacy](https://mcp.bimcli.com/privacy)
+Full privacy policy: [https://bimcli.com/privacy](https://bimcli.com/privacy)
 
 ## License
 
