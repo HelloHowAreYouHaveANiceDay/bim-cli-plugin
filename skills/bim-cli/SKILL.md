@@ -1,7 +1,7 @@
 ---
 name: bim-cli
 description: "Use when working with AEC files: PDF drawing sets, Revit, IFC, CAD. Drives the bim CLI."
-version: 1.0.0
+version: 1.0.1
 author: bimcli.com
 license: MIT
 platforms: [windows]
@@ -37,7 +37,7 @@ iwr -useb https://bimcli.com/install.ps1 | iex
 
 It is per-user, needs no admin rights, and prints `BIM_INSTALLED_OK <version> <path>`. Re-running it upgrades. A shell that was already open needs its PATH refreshed: `export PATH="$PATH:$LOCALAPPDATA/bim-cli"` (bash) or `$env:Path += ";$env:LOCALAPPDATA\bim-cli"` (PowerShell).
 
-Then run `bim doctor --json`. Each failed check carries a `fix` field with the exact remediation command. `overall: "degraded"` is normal: it means some driver's host app (Revit, AutoCAD, Rhino, ...) is not installed, which only matters if you need that driver.
+Then, on first use in a session or whenever a verb fails unexpectedly, run `bim doctor --json`. Each failed check carries a `fix` field with the exact remediation command. `overall: "degraded"` is normal: it means some driver's host app (Revit, AutoCAD, Rhino, ...) is not installed, or a driver is broken, which only matters if you need that driver. A driver with an empty line in `bim describe --index` or an `error` in `bim version --json` is in that state; skip it or tell the user to re-run the installer.
 
 ## Procedure
 
