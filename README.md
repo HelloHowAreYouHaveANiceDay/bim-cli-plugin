@@ -23,9 +23,10 @@ driver or verb makes it available automatically.
 
 ## About this plugin repo
 
-This repository contains **only manifest files** (JSON and Markdown). It contains:
+This repository contains **only manifest files** (JSON and Markdown), plus one stdlib Python
+maintenance script (`scripts/check_skills.py`) that the plugin never runs. It contains:
 
-- No executable code
+- No executable code in the plugin itself
 - No telemetry of its own
 - No secrets or credentials
 - No network calls
@@ -75,6 +76,23 @@ hermes skills install HelloHowAreYouHaveANiceDay/bim-cli-plugin/skills/bim-cli
 
 The skill is Windows-only (`platforms: [windows]`) and expects bim-cli on PATH. It never runs
 the installer itself; it hands the PowerShell one-liner to the user.
+
+It is also served from bimcli.com as an [Agent Skills well-known endpoint](https://agentskills.io):
+`https://bimcli.com/.well-known/skills/index.json` (proxied live from `skills/` on `main`).
+
+```bash
+hermes skills install well-known:https://bimcli.com/.well-known/skills/bim-cli
+```
+
+### Changing a skill
+
+1. Edit `skills/<name>/`, bump `version:` in its frontmatter.
+2. `python scripts/check_skills.py` regenerates `skills/index.json` (the well-known index).
+3. `python scripts/check_skills.py --check --scan <hermes-agent checkout>` must pass: Hermes
+   only installs community skills that its scanner rates SAFE. Never put `curl ... | bash`
+   (or any pipe-to-shell) in a skill; that is a hard block.
+4. Merge to `main`. The tap and bimcli.com pick it up immediately; Hermes users get it with
+   `hermes skills update`.
 
 ## Privacy Policy
 
