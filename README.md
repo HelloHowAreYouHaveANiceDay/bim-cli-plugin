@@ -60,6 +60,22 @@ All execution is local: the plugin simply tells Claude Code how to launch the al
 
 3. Restart Claude Code. Verify with `bim doctor` that installed drivers are healthy.
 
+## Agent skill (Hermes, Claude Code, and other Agent Skills hosts)
+
+`skills/bim-cli/` is an [Agent Skills](https://agentskills.io) skill that teaches an agent how to
+drive bim from the terminal: discovery with `bim describe`, output and error conventions, and
+working notes for the PDF and Revit drivers. Claude Code loads it automatically with this plugin.
+
+**Hermes Agent:**
+
+```bash
+hermes skills tap add HelloHowAreYouHaveANiceDay/bim-cli-plugin
+hermes skills install HelloHowAreYouHaveANiceDay/bim-cli-plugin/skills/bim-cli
+```
+
+The skill is Windows-only (`platforms: [windows]`) and expects bim-cli on PATH. It never runs
+the installer itself; it hands the PowerShell one-liner to the user.
+
 ## Privacy Policy
 
 bim-cli runs entirely on your local machine. The MCP server (`bim mcp`) does not make
