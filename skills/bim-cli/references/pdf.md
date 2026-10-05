@@ -24,11 +24,18 @@ bim pdf pages <file>     # per-page mediaBox/cropBox, rotation, OCG layers
 | A schedule or table as rows | `table <file> --page N` |
 | Raw text with coordinates | `text <file> --page N` |
 | Revit element IDs on a sheet | `marked <file> --page N` |
+| How many doors/rooms/walls in a package | `bim.extract <file> --name elements.json --out e.json`, then count `class` with code (no counting verb) |
 | A picture of a page or region | `render <file> --page N [--dpi 150] [--bbox x0,y0,x1,y1 --out img.png]` |
 
 ## Page operations
 
-`page.split`, `page.merge`, `page.collect --pages 1,3,5-8`, `page.rotate`, `page.crop`, `stamp.add` / `stamp.remove`, `optimize`, `form.fields` / `form.fill` / `form.flatten`, `bookmark.*`, `attach.*`, `security.*`. Single-file results go to `--out`, multi-file results to `--out-dir`; both default to a new file or a temp dir, never the input.
+- **One or some sheets into one new PDF:** `page.collect <file> --pages 1,3,5-8 --out out.pdf`.
+- **Every page (or every N pages) into separate files:** `page.split <file> --out-dir DIR [--span N | --by-bookmark]`. It has no `--pages`/`--out`.
+- Also: `page.merge`, `page.rotate`, `page.crop`, `stamp.add` / `stamp.remove`, `optimize`, `form.fields` / `form.fill` / `form.flatten`, `bookmark.*`, `attach.*`, `security.*`.
+
+Single-file results go to `--out`, multi-file results to `--out-dir`; both default to a new file or a temp dir, never the input.
+
+**Page operations drop PDF-BIM sidecars.** Collecting, splitting or merging pages of a package produces a plain PDF with no attachments. Say so when you hand the file over. If the user needs the result to stay a package, re-embed sidecars with `bim.pack` (check `bim describe --driver pdf --verb bim.pack --json`).
 
 ## PDF-BIM packages
 
@@ -42,7 +49,7 @@ bim pdf bim.extract-room-schedule <file>
 bim pdf bim.validate <file>
 ```
 
-**Authority rule (from the packages' own README-agent.md):** the printed sheets are the contractual document. Sidecar counts, names and type taxonomies come from the model database and routinely differ from what schedules and legends print. When they differ, report both figures and say which source each came from.
+**Authority rule (from the packages' own README-agent.md):** the printed sheets are the contractual document. Sidecar counts, names and type taxonomies come from the model database and routinely differ from what schedules and legends print. When they differ, report both figures and say which source each came from. When the set prints nothing to check against (no matching schedule, `search` finds no hits), report the figure as model-derived and unconfirmed by the drawings.
 
 ## Pitfalls
 
