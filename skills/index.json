@@ -1,0 +1,13 @@
+{
+  "skills": [
+    {
+      "name": "bim-cli",
+      "description": "Use when working with AEC files: PDF drawing sets, Revit, IFC, CAD. Drives the bim CLI.",
+      "files": [
+        "SKILL.md",
+        "references/pdf.md",
+        "references/revit.md"
+      ]
+    }
+  ]
+}
