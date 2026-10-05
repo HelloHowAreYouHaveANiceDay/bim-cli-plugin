@@ -1,0 +1,34 @@
+name: skills
+
+# Gate for the agent skill(s) under skills/: the well-known index must be current
+# and every skill must scan SAFE under the Hermes Agent skills scanner (Hermes
+# refuses community skills that are not SAFE).
+
+on:
+  pull_request:
+    paths: ['skills/**', 'scripts/check_skills.py', '.github/workflows/skills.yml']
+  push:
+    branches: [main]
+    paths: ['skills/**', 'scripts/check_skills.py', '.github/workflows/skills.yml']
+  schedule:
+    - cron: '17 9 * * 1'   # weekly: catch new scanner rules before users do
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+        with:
+          repository: NousResearch/hermes-agent
+          path: .hermes-agent
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: index current + Hermes scan SAFE
+        run: python scripts/check_skills.py --check --scan .hermes-agent
