@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.bimcli/bim-cli",
+  "title": "bim-cli",
+  "description": "Let agents drive Revit, AutoCAD, SketchUp, Blender and PDF sets on your own Windows desktop.",
+  "websiteUrl": "https://bimcli.com",
+  "repository": {
+    "url": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin",
+    "source": "github"
+  },
+  "version": "0.26.0",
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin/releases/download/mcpb-v0.26.0/bim-cli-0.26.0.mcpb",
+      "version": "0.26.0",
+      "fileSha256": "d57464136b12c623673c0a0e6bb69a3fef496e3790da273cae0d347ad4044a16",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

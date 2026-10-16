@@ -1,0 +1,46 @@
+{
+  "manifest_version": "0.3",
+  "name": "bim-cli",
+  "display_name": "bim-cli: desktop AEC tools for AI agents",
+  "version": "0.26.0",
+  "description": "Drive Revit, AutoCAD, SketchUp, Blender and PDF drawing sets on your own Windows desktop from any MCP agent.",
+  "long_description": "bim-cli lets AI agents operate the desktop AEC tools you already have installed: Revit, AutoCAD, SketchUp and Blender, plus PDF drawing sets, Excel/Google Sheets round-trips and NYC site data. It runs on your machine, so your models and files never go to a cloud service.\n\nEvery installed bim-cli verb becomes an MCP tool automatically (the server reads `bim describe --json` at startup).\n\n**Requires bim-cli installed on Windows.** Install it from https://bimcli.com (PowerShell installer). This extension runs the bim MCP server against that install (default `%LOCALAPPDATA%\\bim-cli`). Without an install it starts with no tools.\n\nAnonymous usage telemetry (verb name, OS, success/error kind) can be turned off with `DO_NOT_TRACK=1` or `BIM_TELEMETRY=0`.",
+  "author": {
+    "name": "Small Tiger Group",
+    "url": "https://bimcli.com"
+  },
+  "homepage": "https://bimcli.com",
+  "documentation": "https://bimcli.com/mcp/",
+  "support": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin"
+  },
+  "server": {
+    "type": "binary",
+    "entry_point": "server/bim.exe",
+    "mcp_config": {
+      "command": "${__dirname}/server/bim.exe",
+      "args": ["mcp"],
+      "env": {
+        "BIM_HOME": "${user_config.bim_home}"
+      }
+    }
+  },
+  "tools_generated": true,
+  "keywords": ["revit", "autocad", "sketchup", "blender", "bim", "aec", "pdf", "desktop", "architecture", "construction"],
+  "license": "Proprietary",
+  "privacy_policies": ["https://bimcli.com/privacy"],
+  "compatibility": {
+    "platforms": ["win32"]
+  },
+  "user_config": {
+    "bim_home": {
+      "type": "directory",
+      "title": "bim-cli install folder",
+      "description": "Where the bim-cli installer put bim (default %LOCALAPPDATA%\\bim-cli). Drivers and verbs are loaded from here.",
+      "default": "${HOME}/AppData/Local/bim-cli",
+      "required": true
+    }
+  }
+}
