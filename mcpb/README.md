@@ -4,8 +4,8 @@ Listed at https://registry.modelcontextprotocol.io as `com.bimcli/bim-cli`, as a
 bundle attached to a GitHub release of this repo (`mcpb-v<bim version>`).
 
 The bundle is thin: `server/bim.exe` from the bim-cli release zip, run as `bim mcp`
-with `BIM_HOME` pointed at the user's bim-cli install. Without an install it starts
-with zero tools.
+with `BIM_HOME` pointed at the user's bim-cli install. Without an install (bim v0.27.0+) it
+offers a single `bim_setup` tool with install steps.
 
 ## Publish a new version
 
