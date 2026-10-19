@@ -1,7 +1,7 @@
 ---
 name: bim-cli
 description: "Use when working with AEC files: PDF drawing sets, Revit, IFC, CAD. Drives the bim CLI."
-version: 1.0.2
+version: 1.1.0
 author: bimcli.com
 license: MIT
 platforms: [windows]
@@ -29,17 +29,24 @@ metadata:
 bim version --json
 ```
 
-If the command is not found, **do not install it yourself**. Tell the user bim-cli is Windows-only and give them the installer to run in PowerShell:
+If the command is not found, bim-cli is not installed. It is Windows-only, per-user, needs no admin rights and no account. **Ask the user once** whether to install it (one sentence: what it is, that it installs to `%LOCALAPPDATA%\bim-cli` and adds itself to their user PATH). On yes, run the installer: download it, then run it. Do not pipe it into `iex`; some agent runtimes block that.
 
 ```powershell
-iwr -useb https://bimcli.com/install.ps1 | iex
+iwr -useb https://bimcli.com/install.ps1 -OutFile $env:TEMP\bim-install.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\bim-install.ps1
 ```
 
-It is per-user, needs no admin rights, and prints `BIM_INSTALLED_OK <version> <path>`. Re-running it upgrades. A shell that was already open needs its PATH refreshed: `export PATH="$PATH:$LOCALAPPDATA/bim-cli"` (bash) or `$env:Path += ";$env:LOCALAPPDATA\bim-cli"` (PowerShell).
+From bash, wrap it in single quotes so `$env:TEMP` reaches PowerShell intact:
+
+```bash
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command 'iwr -useb https://bimcli.com/install.ps1 -OutFile $env:TEMP\bim-install.ps1; powershell -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\bim-install.ps1'
+```
+
+You may read the downloaded script before running it; it is plain PowerShell and checks the release's SHA256. Success prints `BIM_INSTALLED_OK <version> <path>` (about 30 s). Re-running it upgrades in place. A shell that was already open needs its PATH refreshed: `export PATH="$PATH:$LOCALAPPDATA/bim-cli"` (bash) or `$env:Path += ";$env:LOCALAPPDATA\bim-cli"` (PowerShell). If the user says no, give them the two lines above to run themselves in PowerShell.
 
 Then, on first use in a session or whenever a verb fails unexpectedly, run `bim doctor --json`. Each failed check carries a `fix` field with the exact remediation command. `overall: "degraded"` is normal: it means some driver's host app (Revit, AutoCAD, Rhino, ...) is not installed, or a driver is broken, which only matters if you need that driver. A driver with an empty line in `bim describe --index` or an `error` in `bim version --json` is in that state; skip it or tell the user to re-run the installer.
 
-**Out-of-date install.** If `bim doctor --json` shows `"update": {"available": true, "latest": "<tag>"}`, tell the user once per session that bim-cli `<tag>` is out and give them the installer line above to re-run in PowerShell. Re-running upgrades in place. Do not run it yourself. Also suggest the update when a verb error has kind `driver-outdated`. Older bim versions have no `update` field; treat that as "unknown", not as up to date.
+**Out-of-date install.** If `bim doctor --json` shows `"update": {"available": true, "latest": "<tag>"}`, tell the user once per session that bim-cli `<tag>` is out and offer to re-run the installer above (download, then run). Re-running upgrades in place. Run it only after they say yes. Also suggest the update when a verb error has kind `driver-outdated`. Older bim versions have no `update` field; treat that as "unknown", not as up to date.
 
 ## Procedure
 
