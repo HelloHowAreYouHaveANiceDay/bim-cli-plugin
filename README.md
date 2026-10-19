@@ -39,7 +39,7 @@ All execution is local: the plugin simply tells Claude Code how to launch the al
 1. **Install bim-cli** (Windows, run in PowerShell):
 
    ```powershell
-   iwr -useb https://bimcli.com/install.ps1 | iex
+   iwr -useb https://bimcli.com/install.ps1 -OutFile $env:TEMP\bim-install.ps1; powershell -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\bim-install.ps1
    ```
 
    Verify: `bim describe --json` should list installed drivers.

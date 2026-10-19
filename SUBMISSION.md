@@ -50,7 +50,7 @@ runs in the cloud. Document content, file paths, and Revit models never leave yo
 Optional anonymous telemetry (verb shape, OS, success/error kind) is opt-out via
 `DO_NOT_TRACK=1` or `BIM_TELEMETRY=0`.
 
-Windows-only. Requires bim-cli v0.3.6+ installed (`iwr -useb https://bimcli.com/install.ps1 | iex`).
+Windows-only. Requires bim-cli v0.3.6+ installed (`iwr -useb https://bimcli.com/install.ps1 -OutFile $env:TEMP\bim-install.ps1; powershell -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\bim-install.ps1`).
 ```
 
 ---
