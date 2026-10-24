@@ -30,14 +30,15 @@
 ### Short description (≤ 160 chars)
 
 ```
-Headless Revit export, PDF batch ops, flood/site data — run from Claude Code, offline, no Revit session required.
+Revit export without touching the GUI, drawing-set PDF ops, flood/site data — run from Claude Code, offline, no admin.
 ```
 
 ### Long description
 
 ```
 bim-cli gives Claude Code direct access to AEC workflows that no other MCP covers:
-headless Revit sheet export and parameter writes (no running Revit session, no admin),
+Revit sheet export and parameter writes without touching the GUI (bim launches and drives
+an installed Revit 2024-2026; no admin),
 PDF batch stamping / Bates numbering / splitting / merging, FEMA flood zone lookup by
 address or coordinates, and IFC/FBX/glTF conversion via Blender headlessly.
 
