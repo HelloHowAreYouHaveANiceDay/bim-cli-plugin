@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "bim-cli",
   "display_name": "bim-cli: desktop AEC tools for AI agents",
-  "version": "0.27.0",
+  "version": "0.32.0",
   "description": "Drive Revit, AutoCAD, SketchUp, Blender and PDF drawing sets on your own Windows desktop from any MCP agent.",
   "long_description": "bim-cli lets AI agents operate the desktop AEC tools you already have installed: Revit, AutoCAD, SketchUp and Blender, plus PDF drawing sets, Excel/Google Sheets round-trips and NYC site data. It runs on your machine, so your models and files never go to a cloud service.\n\nEvery installed bim-cli verb becomes an MCP tool automatically (the server reads `bim describe --json` at startup).\n\n**Requires bim-cli installed on Windows.** Install it from https://bimcli.com (PowerShell installer). This extension runs the bim MCP server against that install (default `%LOCALAPPDATA%\\bim-cli`). Without an install it starts with no tools.\n\nAnonymous usage telemetry (verb name, OS, success/error kind) can be turned off with `DO_NOT_TRACK=1` or `BIM_TELEMETRY=0`.",
   "author": {
