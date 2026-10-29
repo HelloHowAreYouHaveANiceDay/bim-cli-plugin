@@ -30,17 +30,17 @@
 ### Short description (≤ 160 chars)
 
 ```
-Revit export without touching the GUI, drawing-set PDF ops, flood/site data — run from Claude Code, offline, no admin.
+Drive Revit 2024-2027, check drawing-set PDFs, pull US site and flood data -- from Claude Code, local, free, no account.
 ```
 
 ### Long description
 
 ```
-bim-cli gives Claude Code direct access to AEC workflows that no other MCP covers:
+bim-cli gives Claude Code direct access to AEC workflows:
 Revit sheet export and parameter writes without touching the GUI (bim launches and drives
-an installed Revit 2024-2026; no admin),
+an installed Revit 2024-2027; no admin),
 PDF batch stamping / Bates numbering / splitting / merging, FEMA flood zone lookup by
-address or coordinates, and IFC/FBX/glTF conversion via Blender headlessly.
+address or coordinates, and IFC/FBX/glTF conversion via Blender in the background.
 
 Every installed bim-cli driver and verb is exposed automatically as an MCP tool — the
 server calls `bim describe --json` at startup and generates tools dynamically, so adding
