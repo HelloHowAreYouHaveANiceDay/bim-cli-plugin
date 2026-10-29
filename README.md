@@ -1,8 +1,9 @@
 # bim-cli Claude Code Plugin
 
-Claude Code plugin manifest for [bim-cli](https://bimcli.com) -- headless Revit export, PDF
-batch export, flood/site data lookup, and offline AEC tasks. Runs from your AI assistant
-without Revit or any desktop app open.
+Claude Code plugin for [bim-cli](https://bimcli.com). Lets AI agents drive Revit 2024-2027,
+check drawing-set PDFs, and pull US site and flood data -- local, free, no account.
+Revit jobs need Revit installed on the machine: bim starts or attaches to it and drives it,
+so no one has to click through Revit. PDF, site and IFC jobs need no desktop app.
 
 **Windows-only.** bim-cli is a Windows-only CLI. This plugin requires a Windows machine with
 bim-cli installed.
@@ -12,11 +13,12 @@ bim-cli installed.
 Exposes all installed bim-cli verbs as MCP tools in Claude Code. Each tool maps to a
 `bim <format> <verb>` command running locally on your machine. Example tools:
 
-- `bim_pdf_text` -- extract text from a PDF without opening it
-- `bim_pdf_stamp` -- apply a Bates stamp or watermark to PDF pages
-- `bim_pdf_split`, `bim_pdf_merge` -- split or combine PDF files
-- `bim_site_flood_lookup` -- flood zone lookup by address or coordinates
-- `bim_blender_convert` -- convert IFC/FBX/glTF headlessly
+- `pdf_set.check` -- find missing sheets, unresolved callouts and titleblock mismatches in a drawing set
+- `pdf_text` -- extract text from a PDF without opening it
+- `pdf_stamp.add` -- apply a Bates stamp or watermark to PDF pages
+- `pdf_page.split`, `pdf_page.merge` -- split or combine PDF files
+- `site_flood.lookup`, `site_assess` -- flood zone and site data for a US address
+- `blender_convert` -- convert IFC/FBX/glTF in the background
 
 The tool list is generated dynamically from `bim describe --json` -- adding a new bim-cli
 driver or verb makes it available automatically.

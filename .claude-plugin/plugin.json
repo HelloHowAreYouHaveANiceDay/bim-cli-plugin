@@ -2,7 +2,7 @@
   "name": "bim-cli",
   "displayName": "bim-cli — AEC tools for AI agents",
   "version": "0.3.6",
-  "description": "Headless AEC tools for AI agents: PDF batch operations, Revit export, site/flood data, building-code compliance, Blender IFC. Works offline, no cloud backend. Windows only. Install from bimcli.com.",
+  "description": "Lets AI agents drive Revit 2024-2027, check drawing-set PDFs, and pull US site and flood data -- local, free, no account. Also building-code checks and IFC via Blender. Windows only. Install from bimcli.com.",
   "author": {
     "name": "HelloHowAreYouHaveANiceDay",
     "url": "https://bimcli.com"
