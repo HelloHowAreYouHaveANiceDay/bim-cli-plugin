@@ -8,13 +8,13 @@
     "url": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin",
     "source": "github"
   },
-  "version": "0.35.0",
+  "version": "0.35.1",
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin/releases/download/mcpb-v0.35.0/bim-cli-0.35.0.mcpb",
-      "version": "0.35.0",
-      "fileSha256": "4b7461d4f08220a7d63527d5d63db24077dae1edb884742e01e10efd567527b1",
+      "identifier": "https://github.com/HelloHowAreYouHaveANiceDay/bim-cli-plugin/releases/download/mcpb-v0.35.1/bim-cli-0.35.1.mcpb",
+      "version": "0.35.1",
+      "fileSha256": "9397d0e496e9e6b3b3c7280a23abdccb4868bb6a0c773668ce225e495550e523",
       "transport": {
         "type": "stdio"
       }
