@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   check:
-    runs-on: ${{ fromJSON(vars.LINUX_RUNS_ON || '["self-hosted","Linux","X64"]') }}
+    runs-on: ${{ github.event_name == 'pull_request' && 'ubuntu-latest' || fromJSON(vars.LINUX_RUNS_ON || '["self-hosted","Linux","X64"]') }} # standards-allow S4: public repo, PR jobs on hosted runners
     steps:
       - uses: actions/checkout@v5
       - uses: actions/checkout@v5
